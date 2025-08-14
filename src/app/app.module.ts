@@ -10,12 +10,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
+import { ContactFilterPipe } from './contact/contact-filter.pipe';
+import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent],
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    ContactFilterPipe,
+    ContactDetailComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,6 +35,7 @@ import { ContactComponent } from './contact/contact.component';
     MatTableModule,
     MatIconModule,
     MatCardModule,
+    MatDialogModule,
     AsyncPipe,
   ],
   providers: [],

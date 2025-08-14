@@ -73,22 +73,26 @@
 
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search Contacts</mat-label>
-      <input
-        matInput
-        placeholder="Type name, email or phone"
-        [(ngModel)]="searchTerm"
-        (ngModelChange)="searchContacts()"
-      />
+      <input matInput placeholder="Type name" [(ngModel)]="searchTerm" />
     </mat-form-field>
+
+    <app-contact-detail
+      *ngIf="selectedContact"
+      [contact]="selectedContact"
+      (close)="closeContactDetail()"
+    />
 
     <mat-card-content>
       <div
         class="table-wrapper"
-        *ngIf="filteredContacts.length > 0; else empty"
+        *ngIf="
+          (filteredContacts | contactFilter : searchTerm).length > 0;
+          else empty
+        "
       >
         <table
           mat-table
-          [dataSource]="filteredContacts"
+          [dataSource]="filteredContacts | contactFilter : searchTerm"
           class="mat-elevation-z8 contacts-table"
         >
           <!-- Name Column -->
@@ -137,6 +141,7 @@
           <tr
             mat-row
             *matRowDef="let row; columns: ['name', 'email', 'phone', 'actions']"
+            (click)="openContactDetail(row)"
           ></tr>
         </table>
       </div>

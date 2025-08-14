@@ -1,0 +1,8 @@
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>{{ contact.name }}</h2>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+    <p><strong>Phone:</strong> {{ contact.phone }}</p>
+    <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+  </div>
+</div>

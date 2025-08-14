@@ -14,6 +14,7 @@ export class ContactComponent {
   filteredContacts!: Contact[];
   searchTerm: string = '';
   editingContactId: string | null = null;
+  selectedContact: Contact | null = null;
 
   constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.fb.group({
@@ -69,21 +70,29 @@ export class ContactComponent {
     });
   }
 
-  searchContacts(): void {
-    if (!this.searchTerm) {
-      this.filteredContacts = [...this.contacts];
-    } else {
-      this.filteredContacts = this.contactService.searchContacts(
-        this.searchTerm
-      );
-    }
-  }
+  // searchContacts(): void {
+  //   if (!this.searchTerm) {
+  //     this.filteredContacts = [...this.contacts];
+  //   } else {
+  //     this.filteredContacts = this.contactService.searchContacts(
+  //       this.searchTerm
+  //     );
+  //   }
+  // }
 
-  cancelEdit() {
+  cancelEdit(): void {
     this.editingContactId = null;
     this.contactForm.reset();
     Object.keys(this.contactForm.controls).forEach((key) => {
       this.contactForm.controls[key].setErrors(null);
     });
+  }
+
+  openContactDetail(contact: Contact) {
+    this.selectedContact = contact;
+  }
+
+  closeContactDetail(): void {
+    this.selectedContact = null;
   }
 }

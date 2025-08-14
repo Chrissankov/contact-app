@@ -54,13 +54,13 @@ export class ContactService {
     this.saveToStorage();
   }
 
-  searchContacts(term: string): Contact[] {
-    const lowerTerm = term.toLowerCase();
-    return this.contacts.filter(
-      (c) =>
-        c.name.toLowerCase().includes(lowerTerm) ||
-        c.email.toLowerCase().includes(lowerTerm) ||
-        c.phone.toLowerCase().includes(lowerTerm)
-    );
-  }
+  // searchContacts(term: string): Contact[] {
+  //   const lowerTerm = term.toLowerCase();
+  //   return this.contacts.filter(
+  //     (c) =>
+  //       c.name.toLowerCase().includes(lowerTerm) ||
+  //       c.email.toLowerCase().includes(lowerTerm) ||
+  //       c.phone.toLowerCase().includes(lowerTerm)
+  //   );
+  // }
 }
