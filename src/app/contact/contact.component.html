@@ -1,0 +1,164 @@
+<!-- App Container -->
+<div class="contact-container">
+  <!-- Contact Form -->
+  <form
+    [formGroup]="contactForm"
+    (ngSubmit)="addContact()"
+    class="contact-form"
+  >
+    <mat-card>
+      <mat-card-title class="card-title">
+        {{ editingContactId ? "Edit Contact" : "Add New Contact" }}
+      </mat-card-title>
+      <mat-card-content>
+        <div class="form-fields">
+          <mat-form-field appearance="outline" class="input-data">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" type="text" />
+            <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="input-data">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" />
+            <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+              Enter a valid email
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="input-data">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" type="tel" />
+            <mat-error *ngIf="contactForm.get('phone')?.hasError('required')">
+              Phone is required
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('phone')?.hasError('pattern')">
+              Enter a valid phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="contactForm.invalid"
+        >
+          {{ editingContactId ? "Edit Contact" : "Add Contact" }}
+        </button>
+
+        <button
+          *ngIf="editingContactId"
+          mat-raised-button
+          color="warn"
+          type="button"
+          (click)="cancelEdit()"
+          class="cancel-edit"
+        >
+          Cancel Edit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+  <!-- Search & Contacts Table -->
+  <mat-card class="contacts-card">
+    <mat-card-title class="card-title">Contacts List</mat-card-title>
+
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search Contacts</mat-label>
+      <input
+        matInput
+        placeholder="Type name, email or phone"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="searchContacts()"
+      />
+    </mat-form-field>
+
+    <mat-card-content>
+      <div
+        class="table-wrapper"
+        *ngIf="filteredContacts.length > 0; else empty"
+      >
+        <table
+          mat-table
+          [dataSource]="filteredContacts"
+          class="mat-elevation-z8 contacts-table"
+        >
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let contact">{{ contact.name }}</td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let contact">{{ contact.email }}</td>
+          </ng-container>
+
+          <!-- Phone Column -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>Phone</th>
+            <td mat-cell *matCellDef="let contact">{{ contact.phone }}</td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let contact">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="editContact(contact)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteContact(contact.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="['name', 'email', 'phone', 'actions']"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: ['name', 'email', 'phone', 'actions']"
+          ></tr>
+        </table>
+      </div>
+      <ng-template #empty
+        ><mat-card class="empty">
+          <mat-card-content>
+            <strong *ngIf="contacts.length === 0; else noMatch">
+              No contacts found.
+            </strong>
+            <ng-template #noMatch>
+              <strong>No matching contacts.</strong>
+            </ng-template>
+            <br />
+            <span *ngIf="contacts.length === 0; else tryAdjust">
+              Start by adding your first contact.
+            </span>
+            <ng-template #tryAdjust>
+              <span>Try adjusting your search or filters.</span>
+            </ng-template>
+          </mat-card-content>
+        </mat-card></ng-template
+      >
+    </mat-card-content>
+  </mat-card>
+</div>

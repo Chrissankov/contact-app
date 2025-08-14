@@ -1,0 +1,78 @@
+.contact-container {
+  max-width: 900px;
+  padding: 30px 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-form mat-card,
+.contacts-card {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 13px;
+}
+
+mat-card mat-card-content {
+  padding: 0;
+}
+
+.cancel-edit {
+  margin-left: 2rem;
+}
+
+.form-fields {
+  display: flex;
+  gap: 15px;
+}
+
+.input-data {
+  width: 32%;
+}
+
+::ng-deep .mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.search-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contacts-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+.contacts-table th,
+.contacts-table td {
+  text-align: left;
+  padding: 8px 12px;
+}
+
+.contacts-table th {
+  background-color: #f5f5f5;
+}
+
+.empty {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+}
