@@ -8,8 +8,10 @@ import {
   updateDoc,
   deleteDoc,
 } from '@angular/fire/firestore';
-import { Contact } from '../models/contact.model';
 import { Observable } from 'rxjs';
+import { randFullName, randEmail, randPhoneNumber } from '@ngneat/falso';
+
+import { Contact } from '../models/contact.model';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +45,23 @@ export class ContactService {
       email: contact.email,
       phone: contact.phone,
     });
+  }
+
+  generateRandomContacts(count: number): Contact[] {
+    const randomContacts: Contact[] = [];
+    for (let i = 0; i < count; i++) {
+      randomContacts.push({
+        id: '',
+        name: randFullName(),
+        email: randEmail(),
+        phone: randPhoneNumber({ countryCode: 'LB' }),
+      });
+    }
+    return randomContacts;
+  }
+
+  addRandomContacts(count: number) {
+    const randoms = this.generateRandomContacts(count);
+    randoms.forEach((contact) => this.addContact(contact));
   }
 }

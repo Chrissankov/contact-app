@@ -22,10 +22,6 @@ mat-card mat-card-content {
   padding: 0;
 }
 
-.cancel-edit {
-  margin-left: 2rem;
-}
-
 .form-fields {
   display: flex;
   gap: 15px;
@@ -41,8 +37,16 @@ mat-card mat-card-content {
 
 .card-actions {
   display: flex;
-  flex-wrap: wrap;
   margin-top: 10px;
+  overflow-x: auto;
+}
+
+.cancel-edit {
+  margin-left: 2rem;
+}
+
+.random-gen {
+  margin-left: auto;
 }
 
 .search-field {

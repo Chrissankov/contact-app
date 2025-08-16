@@ -20,7 +20,7 @@ export class ContactComponent {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      phone: ['', [Validators.required, Validators.pattern('^\\+?[0-9 ]+$')]],
     });
 
     this.loadContacts();
@@ -72,16 +72,6 @@ export class ContactComponent {
     });
   }
 
-  // searchContacts(): void {
-  //   if (!this.searchTerm) {
-  //     this.filteredContacts = [...this.contacts];
-  //   } else {
-  //     this.filteredContacts = this.contactService.searchContacts(
-  //       this.searchTerm
-  //     );
-  //   }
-  // }
-
   cancelEdit(): void {
     this.editingContactId = null;
     this.contactForm.reset();
@@ -96,5 +86,9 @@ export class ContactComponent {
 
   closeContactDetail(): void {
     this.selectedContact = null;
+  }
+
+  addRandomContacts(count: number) {
+    this.contactService.addRandomContacts(count);
   }
 }
