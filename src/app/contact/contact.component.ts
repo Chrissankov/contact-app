@@ -11,7 +11,7 @@ import { Contact } from '../models/contact.model';
 export class ContactComponent {
   contactForm: FormGroup;
   contacts: Contact[] = [];
-  filteredContacts!: Contact[];
+  filteredContacts: Contact[] = [];
   searchTerm: string = '';
   editingContactId: string | null = null;
   selectedContact: Contact | null = null;
@@ -27,8 +27,10 @@ export class ContactComponent {
   }
 
   private loadContacts(): void {
-    this.contacts = this.contactService.getContacts();
-    this.filteredContacts = [...this.contacts];
+    this.contactService.getContacts().subscribe((data) => {
+      this.contacts = data;
+      this.filteredContacts = [...this.contacts];
+    });
   }
 
   addContact(): void {
