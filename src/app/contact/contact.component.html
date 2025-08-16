@@ -120,14 +120,14 @@
               <button
                 mat-icon-button
                 color="primary"
-                (click)="editContact(contact)"
+                (click)="editContact(contact); $event.stopPropagation()"
               >
                 <mat-icon>edit</mat-icon>
               </button>
               <button
                 mat-icon-button
                 color="warn"
-                (click)="deleteContact(contact.id)"
+                (click)="deleteContact(contact.id); $event.stopPropagation()"
               >
                 <mat-icon>delete</mat-icon>
               </button>

@@ -17,6 +17,10 @@ import { ContactComponent } from './contact/contact.component';
 import { ContactFilterPipe } from './contact/contact-filter.pipe';
 import { ContactDetailComponent } from './contact/contact-detail/contact-detail.component';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,8 @@ import { ContactDetailComponent } from './contact/contact-detail/contact-detail.
     MatCardModule,
     MatDialogModule,
     AsyncPipe,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
