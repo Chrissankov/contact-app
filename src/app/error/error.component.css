@@ -1,0 +1,28 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f9fa;
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+mat-card {
+  max-width: 400px;
+  text-align: center;
+  padding: 1rem;
+}
+
+button {
+  margin-inline: auto;
+}
