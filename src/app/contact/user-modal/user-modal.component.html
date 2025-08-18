@@ -1,9 +1,18 @@
 <div class="modal-overlay" (click)="onClose()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <h2>My Profile</h2>
-    <p><strong>ID:</strong> {{ user?.uid }}</p>
-    <p><strong>Display Name:</strong> {{ user?.displayName }}</p>
-    <p><strong>Email:</strong> {{ user?.email }}</p>
-    <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+    <h2>{{ "PROFILE.TITLE" | transloco }}</h2>
+    <p>
+      <strong>{{ "PROFILE.ID" | transloco }}:</strong> {{ user?.uid }}
+    </p>
+    <p>
+      <strong>{{ "PROFILE.DISPLAY_NAME" | transloco }}:</strong>
+      {{ user?.displayName }}
+    </p>
+    <p>
+      <strong>{{ "PROFILE.EMAIL" | transloco }}:</strong> {{ user?.email }}
+    </p>
+    <button mat-raised-button color="primary" (click)="onClose()">
+      {{ "PROFILE.CLOSE" | transloco }}
+    </button>
   </div>
 </div>

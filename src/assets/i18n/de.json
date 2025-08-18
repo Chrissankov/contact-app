@@ -65,5 +65,17 @@
       "HAVE_ACCOUNT": "Sie haben bereits ein Konto?",
       "LOGIN_LINK": "Hier anmelden"
     }
+  },
+  "CONTACT_DETAILS": {
+    "EMAIL": "E-Mail",
+    "PHONE": "Telefon",
+    "CLOSE": "Schließen"
+  },
+  "PROFILE": {
+    "TITLE": "Mein Profil",
+    "ID": "ID",
+    "DISPLAY_NAME": "Anzeigename",
+    "EMAIL": "E-Mail",
+    "CLOSE": "Schließen"
   }
 }
