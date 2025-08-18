@@ -27,6 +27,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { UserModalComponent } from './contact/user-modal/user-modal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { UserModalComponent } from './contact/user-modal/user-modal.component';
     provideAuth(() => getAuth()),
     AppRoutingModule,
     RouterOutlet,
+    HttpClientModule,
+    TranslocoRootModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

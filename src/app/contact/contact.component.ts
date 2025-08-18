@@ -94,10 +94,12 @@ export class ContactComponent implements OnInit {
 
   openContactDetail(contact: Contact) {
     this.selectedContact = contact;
+    document.body.classList.add('modal-open');
   }
 
   closeContactDetail(): void {
     this.selectedContact = null;
+    document.body.classList.remove('modal-open');
   }
 
   addRandomContacts(count: number) {
@@ -106,10 +108,12 @@ export class ContactComponent implements OnInit {
 
   openUserModal() {
     this.showUserModal = true;
+    document.body.classList.add('modal-open');
   }
 
   closeUserModal() {
     this.showUserModal = false;
+    document.body.classList.remove('modal-open');
   }
 
   logout() {

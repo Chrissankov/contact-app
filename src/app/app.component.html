@@ -1,1 +1,22 @@
-<router-outlet />
+<header class="app-header">
+  <h1>{{ "APP.TITLE" | transloco }}</h1>
+
+  <div class="lang-switcher">
+    <button
+      mat-button
+      [disabled]="activeLang === 'en'"
+      (click)="changeLang('en')"
+    >
+      🇬🇧 {{ "APP.ENGLISH" | transloco }}
+    </button>
+    <button
+      mat-button
+      [disabled]="activeLang === 'de'"
+      (click)="changeLang('de')"
+    >
+      🇩🇪 {{ "APP.GERMAN" | transloco }}
+    </button>
+  </div>
+</header>
+
+<router-outlet></router-outlet>

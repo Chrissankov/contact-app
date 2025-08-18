@@ -1,31 +1,31 @@
 <div class="auth-container">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title>{{ "AUTH.LOGIN.TITLE" | transloco }}</mat-card-title>
       <mat-icon color="primary">login</mat-icon>
     </mat-card-header>
 
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ "AUTH.LOGIN.EMAIL" | transloco }}</mat-label>
           <input matInput formControlName="email" type="email" />
           <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-            Email is required
+            {{ "AUTH.LOGIN.EMAIL_REQUIRED" | transloco }}
           </mat-error>
           <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-            Enter a valid email
+            {{ "AUTH.LOGIN.EMAIL_INVALID" | transloco }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
+          <mat-label>{{ "AUTH.LOGIN.PASSWORD" | transloco }}</mat-label>
           <input matInput formControlName="password" type="password" />
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-            Password is required
+            {{ "AUTH.LOGIN.PASSWORD_REQUIRED" | transloco }}
           </mat-error>
           <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
-            Password must be at least 6 characters
+            {{ "AUTH.LOGIN.PASSWORD_MIN" | transloco }}
           </mat-error>
         </mat-form-field>
 
@@ -35,12 +35,14 @@
           type="submit"
           [disabled]="loginForm.invalid"
         >
-          Login
+          {{ "AUTH.LOGIN.BUTTON" | transloco }}
         </button>
 
         <p class="switch-link">
-          Don't have an account?
-          <a routerLink="/auth/register">Register here</a>
+          {{ "AUTH.LOGIN.NO_ACCOUNT" | transloco }}
+          <a routerLink="/auth/register">{{
+            "AUTH.LOGIN.REGISTER_LINK" | transloco
+          }}</a>
         </p>
       </form>
     </mat-card-content>

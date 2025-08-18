@@ -1,0 +1,70 @@
+{
+  "APP": {
+    "TITLE": "Contact App",
+    "ENGLISH": "English",
+    "GERMAN": "German"
+  },
+
+  "CONTACT": {
+    "EDIT_CONTACT": "Edit Contact",
+    "ADD_NEW_CONTACT": "Add New Contact",
+    "ADD_CONTACT": "Add Contact",
+    "ADD_RANDOM_5": "Add 5 Random Contacts",
+    "CONTACTS_LIST": "Contacts List",
+    "SEARCH_CONTACTS": "Search Contacts",
+    "TYPE_NAME": "Type name",
+    "NO_CONTACTS": "No contacts found.",
+    "NO_MATCHING_CONTACTS": "No matching contacts.",
+    "START_ADDING_FIRST": "Start by adding your first contact.",
+    "TRY_ADJUST_SEARCH": "Try adjusting your search or filters."
+  },
+  "FORM": {
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone"
+  },
+  "ERRORS": {
+    "NAME_REQUIRED": "Name is required",
+    "EMAIL_REQUIRED": "Email is required",
+    "INVALID_EMAIL": "Enter a valid email",
+    "PHONE_REQUIRED": "Phone is required",
+    "INVALID_PHONE": "Enter a valid phone number"
+  },
+  "COMMON": {
+    "LOGOUT": "Logout",
+    "CANCEL_EDIT": "Cancel Edit",
+    "ACTIONS": "Actions"
+  },
+
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Login",
+      "EMAIL": "Email",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Enter a valid email",
+      "PASSWORD": "Password",
+      "PASSWORD_REQUIRED": "Password is required",
+      "PASSWORD_MIN": "Password must be at least 6 characters",
+      "BUTTON": "Login",
+      "NO_ACCOUNT": "Don't have an account?",
+      "REGISTER_LINK": "Register here"
+    },
+    "REGISTER": {
+      "TITLE": "Register",
+      "DISPLAY_NAME": "Display Name",
+      "DISPLAY_NAME_REQUIRED": "Display Name is required",
+      "EMAIL": "Email",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Enter a valid email",
+      "PASSWORD": "Password",
+      "PASSWORD_REQUIRED": "Password is required",
+      "PASSWORD_MIN": "Password must be at least 6 characters",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "CONFIRM_PASSWORD_REQUIRED": "Confirm Password is required",
+      "PASSWORDS_MISMATCH": "Passwords do not match",
+      "BUTTON": "Register",
+      "HAVE_ACCOUNT": "Already have an account?",
+      "LOGIN_LINK": "Login here"
+    }
+  }
+}

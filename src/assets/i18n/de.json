@@ -1,0 +1,69 @@
+{
+  "APP": {
+    "TITLE": "Kontakt App",
+    "ENGLISH": "Englisch",
+    "GERMAN": "Deutsch"
+  },
+
+  "CONTACT": {
+    "EDIT_CONTACT": "Kontakt bearbeiten",
+    "ADD_NEW_CONTACT": "Neuen Kontakt hinzufügen",
+    "ADD_CONTACT": "Kontakt hinzufügen",
+    "ADD_RANDOM_5": "5 zufällige Kontakte hinzufügen",
+    "CONTACTS_LIST": "Kontaktliste",
+    "SEARCH_CONTACTS": "Kontakte suchen",
+    "TYPE_NAME": "Name eingeben",
+    "NO_CONTACTS": "Keine Kontakte gefunden.",
+    "NO_MATCHING_CONTACTS": "Keine passenden Kontakte.",
+    "START_ADDING_FIRST": "Beginnen Sie mit dem Hinzufügen Ihres ersten Kontakts.",
+    "TRY_ADJUST_SEARCH": "Versuchen Sie, Ihre Suche oder Filter anzupassen."
+  },
+  "FORM": {
+    "NAME": "Name",
+    "EMAIL": "E-Mail",
+    "PHONE": "Telefon"
+  },
+  "ERRORS": {
+    "NAME_REQUIRED": "Name ist erforderlich",
+    "EMAIL_REQUIRED": "E-Mail ist erforderlich",
+    "INVALID_EMAIL": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "PHONE_REQUIRED": "Telefon ist erforderlich",
+    "INVALID_PHONE": "Geben Sie eine gültige Telefonnummer ein"
+  },
+  "COMMON": {
+    "LOGOUT": "Abmelden",
+    "CANCEL_EDIT": "Bearbeitung abbrechen",
+    "ACTIONS": "Aktionen"
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Anmelden",
+      "EMAIL": "E-Mail",
+      "EMAIL_REQUIRED": "E-Mail ist erforderlich",
+      "EMAIL_INVALID": "Geben Sie eine gültige E-Mail ein",
+      "PASSWORD": "Passwort",
+      "PASSWORD_REQUIRED": "Passwort ist erforderlich",
+      "PASSWORD_MIN": "Passwort muss mindestens 6 Zeichen haben",
+      "BUTTON": "Anmelden",
+      "NO_ACCOUNT": "Sie haben noch kein Konto?",
+      "REGISTER_LINK": "Hier registrieren"
+    },
+    "REGISTER": {
+      "TITLE": "Registrieren",
+      "DISPLAY_NAME": "Anzeigename",
+      "DISPLAY_NAME_REQUIRED": "Anzeigename ist erforderlich",
+      "EMAIL": "E-Mail",
+      "EMAIL_REQUIRED": "E-Mail ist erforderlich",
+      "EMAIL_INVALID": "Geben Sie eine gültige E-Mail ein",
+      "PASSWORD": "Passwort",
+      "PASSWORD_REQUIRED": "Passwort ist erforderlich",
+      "PASSWORD_MIN": "Passwort muss mindestens 6 Zeichen haben",
+      "CONFIRM_PASSWORD": "Passwort bestätigen",
+      "CONFIRM_PASSWORD_REQUIRED": "Passwort bestätigen ist erforderlich",
+      "PASSWORDS_MISMATCH": "Passwörter stimmen nicht überein",
+      "BUTTON": "Registrieren",
+      "HAVE_ACCOUNT": "Sie haben bereits ein Konto?",
+      "LOGIN_LINK": "Hier anmelden"
+    }
+  }
+}

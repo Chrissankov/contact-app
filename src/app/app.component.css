@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  background-color: rgba(103, 58, 183, 0.6);
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  height: 36px;
+  margin-top: 15px;
+  text-wrap: nowrap;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
