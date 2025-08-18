@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from './contact.service';
 import { Contact } from '../models/contact.model';
+import { AuthService } from '../auth/auth.service';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   contactForm: FormGroup;
   contacts: Contact[] = [];
   filteredContacts: Contact[] = [];
   searchTerm: string = '';
   editingContactId: string | null = null;
   selectedContact: Contact | null = null;
+  user: User | null = null;
+  showUserModal = false;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService) {
+  constructor(
+    private fb: FormBuilder,
+    private contactService: ContactService,
+    private authService: AuthService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -24,6 +32,10 @@ export class ContactComponent {
     });
 
     this.loadContacts();
+  }
+
+  ngOnInit(): void {
+    this.user = this.authService.currentUser;
   }
 
   private loadContacts(): void {
@@ -90,5 +102,17 @@ export class ContactComponent {
 
   addRandomContacts(count: number) {
     this.contactService.addRandomContacts(count);
+  }
+
+  openUserModal() {
+    this.showUserModal = true;
+  }
+
+  closeUserModal() {
+    this.showUserModal = false;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

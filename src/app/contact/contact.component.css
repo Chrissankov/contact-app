@@ -12,10 +12,30 @@
   padding: 20px;
 }
 
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .card-title {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 13px;
+}
+
+.user-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 26px;
+}
+
+.user-actions:first-child {
+  width: 100%;
 }
 
 mat-card mat-card-content {

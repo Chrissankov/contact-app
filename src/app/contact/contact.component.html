@@ -1,3 +1,10 @@
+<!-- User Info -->
+<app-user-modal
+  *ngIf="showUserModal"
+  [user]="user"
+  (close)="closeUserModal()"
+></app-user-modal>
+
 <!-- App Container -->
 <div class="contact-container">
   <!-- Contact Form -->
@@ -7,9 +14,22 @@
     class="contact-form"
   >
     <mat-card>
-      <mat-card-title class="card-title">
-        {{ editingContactId ? "Edit Contact" : "Add New Contact" }}
-      </mat-card-title>
+      <mat-card-header>
+        <mat-card-title class="card-title">
+          {{ editingContactId ? "Edit Contact" : "Add New Contact" }}
+        </mat-card-title>
+
+        <mat-card-actions class="user-actions">
+          <button mat-icon-button (click)="openUserModal()">
+            <mat-icon class="profile-icon">account_circle</mat-icon>
+          </button>
+
+          <button mat-raised-button color="warn" (click)="logout()">
+            Logout
+          </button>
+        </mat-card-actions>
+      </mat-card-header>
+
       <mat-card-content>
         <div class="form-fields">
           <mat-form-field appearance="outline" class="input-data">

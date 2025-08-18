@@ -26,6 +26,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { UserModalComponent } from './contact/user-modal/user-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
+    UserModalComponent,
   ],
   imports: [
     BrowserModule,
