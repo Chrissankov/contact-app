@@ -73,6 +73,7 @@
   "CONTACT_DETAILS": {
     "EMAIL": "Email",
     "PHONE": "Phone",
+    "ADDRESS": "Address",
     "CLOSE": "Close"
   },
   "PROFILE": {
