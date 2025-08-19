@@ -73,7 +73,13 @@
 
           <mat-form-field appearance="outline" class="input-data">
             <mat-label>{{ "CONTACT.ADDRESS_LABEL" | transloco }}</mat-label>
-            <input matInput formControlName="address" type="text" />
+            <input
+              type="text"
+              matInput
+              formControlName="address"
+              #addressInput
+              placeholder="Enter your address"
+            />
             <mat-error *ngIf="contactForm.get('address')?.hasError('required')">
               {{ "ERRORS.ADDRESS_REQUIRED" | transloco }}
             </mat-error>
@@ -120,9 +126,23 @@
 
   <!-- Search & Contacts Table -->
   <mat-card class="contacts-card">
-    <mat-card-title class="card-title">
-      {{ "CONTACT.CONTACTS_LIST" | transloco }}
-    </mat-card-title>
+    <mat-card-header>
+      <mat-card-title class="card-title">
+        {{ "CONTACT.CONTACTS_LIST" | transloco }}
+      </mat-card-title>
+
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          class="export-btn"
+          type="button"
+          color="accent"
+          (click)="exportToPDF()"
+        >
+          Export to PDF
+        </button>
+      </mat-card-actions>
+    </mat-card-header>
 
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>{{ "CONTACT.SEARCH_CONTACTS" | transloco }}</mat-label>

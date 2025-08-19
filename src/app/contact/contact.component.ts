@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from './contact.service';
 import { Contact } from '../models/contact.model';
 import { AuthService } from '../auth/auth.service';
 import { User } from 'firebase/auth';
+
+import { TranslocoService } from '@ngneat/transloco';
+
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+(pdfMake as any).vfs = pdfFonts.vfs;
 
 function generateFirebaseId(): string {
   const chars =
@@ -14,6 +21,8 @@ function generateFirebaseId(): string {
   }
   return autoId;
 }
+
+declare const google: any;
 
 @Component({
   selector: 'app-contact',
@@ -29,11 +38,13 @@ export class ContactComponent implements OnInit {
   selectedContact: Contact | null = null;
   user: User | null = null;
   showUserModal = false;
+  @ViewChild('addressInput') addressInput!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private authService: AuthService
+    private authService: AuthService,
+    private translocoService: TranslocoService
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -47,6 +58,25 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.currentUser;
+  }
+
+  ngAfterViewInit() {
+    if (!this.addressInput) return;
+
+    if (!google || !google.maps) {
+      console.error('Google Maps API not loaded yet!');
+      return;
+    }
+
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.addressInput.nativeElement,
+      { types: ['address'] }
+    );
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      this.contactForm.controls['address'].setValue(place.formatted_address);
+    });
   }
 
   private loadContacts(): void {
@@ -130,5 +160,39 @@ export class ContactComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  exportToPDF() {
+    const contactsTable = [
+      [
+        this.translocoService.translate('FORM.NAME'),
+        this.translocoService.translate('FORM.EMAIL'),
+        this.translocoService.translate('FORM.PHONE'),
+        this.translocoService.translate('FORM.ADDRESS'),
+      ],
+      ...this.contacts.map((c) => [c.name, c.email, c.phone, c.address || '']),
+    ];
+    const headerMargin: [number, number, number, number] = [0, 0, 0, 10];
+
+    const docDefinition = {
+      content: [
+        { text: 'Contacts List', style: 'header' },
+        {
+          table: {
+            headerRows: 1,
+            widths: ['20%', '30%', '20%', '30%'],
+            body: contactsTable,
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: headerMargin,
+        },
+      },
+    };
+    pdfMake.createPdf(docDefinition).download('contacts.pdf');
   }
 }

@@ -73,6 +73,10 @@ mat-card mat-card-content {
   width: 100%;
   margin-bottom: 15px;
 }
+.export-btn {
+  background-color: rgba(103, 58, 183, 0.9);
+  color: white;
+}
 
 .table-wrapper {
   width: 100%;
