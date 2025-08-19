@@ -9,9 +9,24 @@ import {
   deleteDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { randFullName, randEmail, randPhoneNumber } from '@ngneat/falso';
+import {
+  randFullName,
+  randEmail,
+  randPhoneNumber,
+  randAddress,
+} from '@ngneat/falso';
 
 import { Contact } from '../models/contact.model';
+
+function generateFirebaseId(): string {
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let autoId = '';
+  for (let i = 0; i < 20; i++) {
+    autoId += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return autoId;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +59,7 @@ export class ContactService {
       name: contact.name,
       email: contact.email,
       phone: contact.phone,
+      address: contact.address,
     });
   }
 
@@ -51,10 +67,11 @@ export class ContactService {
     const randomContacts: Contact[] = [];
     for (let i = 0; i < count; i++) {
       randomContacts.push({
-        id: '',
+        id: generateFirebaseId(),
         name: randFullName(),
         email: randEmail(),
         phone: randPhoneNumber({ countryCode: 'LB' }),
+        address: randAddress().country + ' - ' + randAddress().city,
       });
     }
     return randomContacts;

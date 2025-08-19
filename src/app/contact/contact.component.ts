@@ -5,6 +5,16 @@ import { Contact } from '../models/contact.model';
 import { AuthService } from '../auth/auth.service';
 import { User } from 'firebase/auth';
 
+function generateFirebaseId(): string {
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let autoId = '';
+  for (let i = 0; i < 20; i++) {
+    autoId += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return autoId;
+}
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -29,6 +39,7 @@ export class ContactComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^\\+?[0-9 ]+$')]],
+      address: ['', Validators.required],
     });
 
     this.loadContacts();
@@ -57,7 +68,7 @@ export class ContactComponent implements OnInit {
       this.editingContactId = null;
     } else {
       const newContact: Contact = {
-        id: Date.now().toString(),
+        id: generateFirebaseId(),
         ...this.contactForm.value,
       };
       this.contactService.addContact(newContact);
@@ -81,6 +92,7 @@ export class ContactComponent implements OnInit {
       name: contact.name,
       email: contact.email,
       phone: contact.phone,
+      address: contact.address,
     });
   }
 

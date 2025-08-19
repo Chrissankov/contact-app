@@ -16,19 +16,22 @@
     "NO_CONTACTS": "No contacts found.",
     "NO_MATCHING_CONTACTS": "No matching contacts.",
     "START_ADDING_FIRST": "Start by adding your first contact.",
-    "TRY_ADJUST_SEARCH": "Try adjusting your search or filters."
+    "TRY_ADJUST_SEARCH": "Try adjusting your search or filters.",
+    "ADDRESS_LABEL": "Address"
   },
   "FORM": {
     "NAME": "Name",
     "EMAIL": "Email",
-    "PHONE": "Phone"
+    "PHONE": "Phone",
+    "ADDRESS": "Address"
   },
   "ERRORS": {
     "NAME_REQUIRED": "Name is required",
     "EMAIL_REQUIRED": "Email is required",
     "INVALID_EMAIL": "Enter a valid email",
     "PHONE_REQUIRED": "Phone is required",
-    "INVALID_PHONE": "Enter a valid phone number"
+    "INVALID_PHONE": "Enter a valid phone number",
+    "ADDRESS_REQUIRED": "Address is required"
   },
   "COMMON": {
     "LOGOUT": "Logout",
