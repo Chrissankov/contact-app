@@ -30,6 +30,15 @@ import { UserModalComponent } from './contact/user-modal/user-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+
+import {
+  provideFunctions,
+  getFunctions,
+  connectFunctionsEmulator,
+} from '@angular/fire/functions';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +70,13 @@ import { TranslocoRootModule } from './transloco-root.module';
     RouterOutlet,
     HttpClientModule,
     TranslocoRootModule,
+    provideFunctions(() => {
+      const functions = getFunctions();
+      connectFunctionsEmulator(functions, 'localhost', 5001);
+      return functions;
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireFunctionsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
