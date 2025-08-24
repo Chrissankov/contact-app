@@ -12,16 +12,6 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 (pdfMake as any).vfs = pdfFonts.vfs;
 
-function generateFirebaseId(): string {
-  const chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let autoId = '';
-  for (let i = 0; i < 20; i++) {
-    autoId += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return autoId;
-}
-
 declare const google: any;
 
 @Component({
@@ -98,7 +88,6 @@ export class ContactComponent implements OnInit {
       this.editingContactId = null;
     } else {
       const newContact: Contact = {
-        id: generateFirebaseId(),
         ...this.contactForm.value,
       };
       this.contactService.addContact(newContact);

@@ -24,7 +24,7 @@ export class AppComponent {
 
     this.reqFunction();
     this.callFunction();
-    this.createContact();
+    // this.createContact();
   }
 
   changeLang(lang: string) {

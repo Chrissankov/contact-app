@@ -39,7 +39,9 @@ export class ContactService {
   }
 
   addContact(contact: Contact) {
-    return addDoc(this.contactsCollection, contact);
+    return addDoc(this.contactsCollection, contact).then((docRef) => {
+      return updateDoc(docRef, { id: docRef.id });
+    });
   }
 
   getContacts(): Observable<Contact[]> {
@@ -63,11 +65,10 @@ export class ContactService {
     });
   }
 
-  generateRandomContacts(count: number): Contact[] {
-    const randomContacts: Contact[] = [];
+  generateRandomContacts(count: number): Omit<Contact, 'id'>[] {
+    const randomContacts: Omit<Contact, 'id'>[] = [];
     for (let i = 0; i < count; i++) {
       randomContacts.push({
-        id: generateFirebaseId(),
         name: randFullName(),
         email: randEmail(),
         phone: randPhoneNumber({ countryCode: 'LB' }),
@@ -79,6 +80,9 @@ export class ContactService {
 
   addRandomContacts(count: number) {
     const randoms = this.generateRandomContacts(count);
-    randoms.forEach((contact) => this.addContact(contact));
+    randoms.forEach(async (contact) => {
+      const docRef = await addDoc(this.contactsCollection, contact);
+      await updateDoc(docRef, { id: docRef.id });
+    });
   }
 }
